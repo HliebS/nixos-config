@@ -6,7 +6,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos/#hs-g5ke-nixos";
+      nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos-config/#hs-g5ke-nixos";
     };
   };
 
