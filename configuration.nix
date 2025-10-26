@@ -51,7 +51,6 @@
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.fish;
   };
-  programs.fish.enable = true;
   
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings" ];
@@ -73,9 +72,9 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  programs.fish.enable = true;
+
   services.openssh.enable = true;
-  services.openssh.openFirewall = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
