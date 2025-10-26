@@ -100,6 +100,7 @@
 
     bash
     lshw
+    stow
 
     kitty
 
