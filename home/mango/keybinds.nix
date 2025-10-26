@@ -5,7 +5,7 @@
 
     # [LAUNCH_BINDS]
     bind=super,d,spawn,rofi -show drun
-    bind=super,space,spawn,wezterm
+    bind=super,space,spawn,wezterm start --always-new-process
     bind=super,b,spawn,brave
 
     # [EXIT_BINDS]
