@@ -185,9 +185,9 @@
       # bind=ALT,Tab,toggleoverview,
       # bind=ALT,a,togglemaxmizescreen,
       # bind=ALT+SHIFT,f,togglefakefullscreen,
-      # bind=SUPER,i,minimized,
-      # bind=SUPER,o,toggleoverlay,
-      # bind=SUPER+SHIFT,I,restore_minimized
+      bind=SUPER,m,minimized,
+      bind=SUPER,o,toggleoverlay,
+      bind=SUPER+SHIFT,m,restore_minimized
       # bind=ALT,z,toggle_scratchpad
 
       # [layout]: scroller layout
@@ -198,8 +198,8 @@
       # bind=SUPER,n,switch_layout
 
       # [MONITOR]: Switching focus
-      # bind=SUPER+Alt,Left,tagmon,left | Test
-      # bind=SUPER+Alt,Right,tagmon,right | Test
+      bind=SUPER+ALT,Left,tagmon,left
+      bind=SUPER+ALT,Right,tagmon,right
       bind=SUPER+SHIFT,Left,focusmon,left
       bind=SUPER+SHIFT,Right,focusmon,right
 
