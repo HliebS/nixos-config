@@ -13,7 +13,7 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "hs-g5ke-nixos"; # Define your hostname.
+  networking.hostName = "gigabyte-g5ke"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -40,18 +40,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
-  services.getty.autologinUser = "hs";
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.hs = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.fish;
-  };
   
+  # Grapics drivers setup for nvidia
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings" ];
   };
@@ -72,35 +62,22 @@
     };
   };
 
-  programs.fish.enable = true;
-
-  services.openssh.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    settings = {
-      default-cache-ttl = 43200;
-      max-cache-ttl = 43200;
-    };
-  };
-
-  programs.git.enable = true;
-
-  programs.mango.enable = true;
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
-    neovim
-    tldr
-    brave
-
-    bash
-    lshw
-    stow
-
-    kitty
-
     pavucontrol # PulseAudio Volume Control
     pamixer # Command-line mixer for PulseAudio
+
+    lshw
+    tldr
+    stow
+
+    wezterm
+
+    neovim
+
+    brave
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -117,23 +94,9 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
 }
-

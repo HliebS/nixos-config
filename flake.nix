@@ -16,27 +16,33 @@
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
-    nixosConfigurations.hs-g5ke-nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
-      
-      modules = [
-        ./configuration.nix
-	      inputs.disko.nixosModules.disko
-        inputs.mangowc.nixosModules.mango
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            users.hs.imports = [
-              ./home.nix
-              inputs.mangowc.hmModules.mango
-            ];
-          };
-        }
-      ];
+    nixosConfigurations = {
+      gigabyte-g5ke = let
+        username = "hliebs";
+      in
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        
+        modules = [
+          inputs.disko.nixosModules.disko
+          ./hosts/gigabyte-g5ke/configuration.nix
+          ./users/${username}/user-configuration.nix
+          inputs.mangowc.nixosModules.mango
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.${username}.imports = [
+                inputs.mangowc.hmModules.mango
+                ./users/${username}/home.nix
+              ];
+            };
+          }
+        ];
+      };
     };
   };
 }

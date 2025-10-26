@@ -1,12 +1,12 @@
 { config, pkgs, ... }:
 {
-  home.username = "hs";
-  home.homeDirectory = "/home/hs";
+  home.username = "hliebs";
+  home.homeDirectory = "/home/hliebs";
 
   programs.fish = {
     enable = true;
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos-config/#hs-g5ke-nixos";
+      nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos-config/#gigabyte-g5ke";
     };
   };
 
@@ -144,7 +144,6 @@
       animation_curve_tag=0.46,1.0,0.29,1
       animation_curve_close=0.08,0.92,0,1
 
-
       # [LAYER]: Rules
       layerrule=animation_type_open:zoom,layer_name:rofi
       layerrule=animation_type_close:zoom,layer_name:rofi
@@ -278,7 +277,7 @@
       # axisbind=SUPER,UP,viewtoleft_have_client
       # axisbind=SUPER,DOWN,viewtoright_have_client
     '';
-
+  };
 
   home.stateVersion = "25.05";
 }
