@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -18,14 +22,18 @@
       
       modules = [
         ./configuration.nix
-	inputs.disko.nixosModules.disko
+	      inputs.disko.nixosModules.disko
+        inputs.mangowc.nixosModules.mango
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.hs = import ./home.nix;
             backupFileExtension = "backup";
+            users.hs.imports = [
+              ./home.nix
+              inputs.mangowc.hmModules.mango
+            ];
           };
         }
       ];
