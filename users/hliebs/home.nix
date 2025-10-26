@@ -157,7 +157,7 @@
 
       # [LAUNCH]
       bind=super,d,spawn,rofi -show drun
-      bind=super,space,spawn,kitty
+      bind=super,space,spawn,wezterm
       bind=super,b,spawn,brave
 
       # [EXIT]
