@@ -30,6 +30,8 @@
     keyMap = "de";
   };
 
+  fonts.fontDir.enable = true;
+
   # Enable sound.
   # https://nixos.wiki/wiki/NixOS_Wiki:Audio
   security.rtkit.enable = true;
