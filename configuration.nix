@@ -86,12 +86,7 @@
 
   programs.git.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  # programs.firefox.enable = true;
+  programs.mango.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
