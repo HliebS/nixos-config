@@ -34,7 +34,8 @@
           inputs.mangowc.nixosModules.mango
           inputs.home-manager.nixosModules.home-manager
           {
-            home-manager = {
+            home-manager =
+            {
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
@@ -42,6 +43,9 @@
                 inputs.mangowc.hmModules.mango
                 ./users/${username}/home.nix
               ];
+              extraSpecialArgs = {
+                inherit pkgs-stable;
+              };
             };
           }
         ];

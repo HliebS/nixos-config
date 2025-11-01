@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 {
-  home.packages = with pkgs; [
-    libreoffice
-    hunspell
-    hunspellDicts.de_DE
-    hunspellDicts.en_US
+  home.packages = [
+    pkgs.libreoffice
+    pkgs.hunspell
+    pkgs.hunspellDicts.de_DE
+    pkgs.hunspellDicts.en_US
+    pkgs-stable.xournalpp
   ];
 }
