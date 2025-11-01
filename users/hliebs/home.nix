@@ -5,6 +5,7 @@
 
   imports = [
     ../../home/mango
+    ../../home/programs
   ];
 
   programs.fish = {
