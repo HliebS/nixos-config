@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "nixpkgs/nixos-25.05";
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,15 +16,17 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, ... }: {
     nixosConfigurations = {
       gigabyte-g5ke = let
         username = "hliebs";
+        system = "x86_64-linux";
+        pkgs-stable = import nixpkgs-stable { inherit system; };
       in
       nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = {inherit inputs;};
-        
+
         modules = [
           inputs.disko.nixosModules.disko
           ./hosts/gigabyte-g5ke/configuration.nix
