@@ -16,7 +16,7 @@
     rootcolor=0x201b14ff
     bordercolor=0x444444ff
     focuscolor=0xc9b890ff
-    maxmizescreencolor=0x89aa61ff
+    # maxmizescreencolor=0x89aa61ff
     urgentcolor=0xad401fff
     scratchpadcolor=0x516c93ff
     globalcolor=0xb153a7ff

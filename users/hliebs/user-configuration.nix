@@ -3,7 +3,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hliebs = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     shell = pkgs.fish;
   };
   programs.fish.enable = true;
@@ -14,7 +17,7 @@
     ];
 
     fontconfig = {
-      defaultFonts ={
+      defaultFonts = {
         monospace = [ "JetBrains Mono" ];
       };
     };
@@ -34,4 +37,3 @@
 
   programs.mango.enable = true;
 }
-
