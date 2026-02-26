@@ -1,10 +1,15 @@
-{ config, lib, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./disko-config.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./disko-config.nix
+  ];
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.grub.enable = true;
@@ -14,7 +19,7 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "gigabyte-g5ke"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -42,10 +47,15 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  
+
   # Grapics drivers setup for nvidia
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings" ];
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "nvidia-x11"
+        "nvidia-settings"
+      ];
   };
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -74,13 +84,35 @@
     lshw
     tldr
     stow
+    ripgrep
+    fd
 
     wezterm
 
+    libgcc
+    gnumake
+    cmake
+
+    lua
+
     neovim
+    lua-language-server
+    stylua
+    nixd
+    nixfmt
 
     brave
   ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.optimise = {
+    automatic = true;
+    dates = [ "03:45" ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -94,8 +126,11 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
   #
