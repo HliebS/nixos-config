@@ -1,13 +1,12 @@
 {
   # "eDP-1, 1920x1080@60, 0x0, 1.25"
-  # "HDMI-A-1, 2560x1440@60, 1536x0, 1.0"
-  # "DP-5, 1920x1080@60, 4096x0, 1"
+  # "DP-5, 2560x1440@60, 1536x0, 1.0"
+  # "HDMI-A-1, 1920x1080@60, 4096x0, 1"
 
   wayland.windowManager.mango.settings = ''
     # [MONITOR]
-    monitorrule=eDP-1,0.55,1,tile,0,1.25,0,0,1920,1080,60
-    monitorrule=HDMI-A-1,0.55,1,tile,0,1,1536,0,2560,1440,60
-    monitorrule=DP-5,0.55,1,tile,0,1,4096,0,1920,1080,60
+    monitorrule=name:eDP-1,width:1920,height:1080,refresh:60,x:0,y:0,scale:1.25,vrr:0,rr:0
+    monitorrule=name:DP-5,width:3440,height:1440,refresh:144,x:1536,y:0,scale:1,vrr:0,rr:0
 
     # [MONITOR_BINDS]
     # Move focus to monitor on the left
